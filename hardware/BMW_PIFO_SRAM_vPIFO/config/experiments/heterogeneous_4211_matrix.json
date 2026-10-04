@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "name": "heterogeneous_4211_capacity_matrix",
+  "description": "Four logical PIFOs with physical shards distributed approximately in a 4:2:1:1 ratio.",
+  "fixed_parameters": {
+    "order": 2,
+    "logical_tree_num": 4,
+    "request_ports": 4,
+    "logical_pending_depth": 12,
+    "pop_result_fifo_depth": 10,
+    "fifo_size": 8,
+    "ptw": 16,
+    "mtw": 16,
+    "ctw": 10,
+    "clock_period_ns": 3.333,
+    "part": "xcu200-fsgd2104-2-e"
+  },
+  "pilot_points": ["l4_n8", "l4_n16", "l5_n10", "l6_n6"],
+  "points": [
+    {"name": "l4_n4",  "level": 4, "physical_tree_num": 4,  "shard_counts": [1, 1, 1, 1]},
+    {"name": "l4_n8",  "level": 4, "physical_tree_num": 8,  "shard_counts": [4, 2, 1, 1]},
+    {"name": "l4_n16", "level": 4, "physical_tree_num": 16, "shard_counts": [8, 4, 2, 2]},
+    {"name": "l4_n32", "level": 4, "physical_tree_num": 32, "shard_counts": [16, 8, 4, 4]},
+    {"name": "l4_n64", "level": 4, "physical_tree_num": 64, "shard_counts": [32, 16, 8, 8]},
+    {"name": "l5_n5",  "level": 5, "physical_tree_num": 5,  "shard_counts": [2, 1, 1, 1]},
+    {"name": "l5_n10", "level": 5, "physical_tree_num": 10, "shard_counts": [5, 3, 1, 1]},
+    {"name": "l5_n20", "level": 5, "physical_tree_num": 20, "shard_counts": [10, 5, 3, 2]},
+    {"name": "l5_n40", "level": 5, "physical_tree_num": 40, "shard_counts": [20, 10, 5, 5]},
+    {"name": "l6_n6",  "level": 6, "physical_tree_num": 6,  "shard_counts": [3, 1, 1, 1]},
+    {"name": "l6_n12", "level": 6, "physical_tree_num": 12, "shard_counts": [6, 3, 2, 1]},
+    {"name": "l6_n24", "level": 6, "physical_tree_num": 24, "shard_counts": [12, 6, 3, 3]}
+  ]
+}

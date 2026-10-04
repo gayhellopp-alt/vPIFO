@@ -1,0 +1,75 @@
+{
+  "configuration_mode": "generation_time_compile_time",
+  "fingerprint": "4249a76bdb0941e68b79d5e67d964e54f8fda222af840ea86586d2b3d65e1105",
+  "logical_id_width": 2,
+  "logical_layout": [
+    {
+      "logical_id": 0,
+      "physical_shards": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "required_capacity": 100,
+      "shard_count": 4,
+      "shard_offset": 0,
+      "supplied_capacity": 120
+    },
+    {
+      "logical_id": 1,
+      "physical_shards": [
+        4
+      ],
+      "required_capacity": 20,
+      "shard_count": 1,
+      "shard_offset": 4,
+      "supplied_capacity": 30
+    },
+    {
+      "logical_id": 2,
+      "physical_shards": [
+        5
+      ],
+      "required_capacity": 30,
+      "shard_count": 1,
+      "shard_offset": 5,
+      "supplied_capacity": 30
+    },
+    {
+      "logical_id": 3,
+      "physical_shards": [
+        6
+      ],
+      "required_capacity": 25,
+      "shard_count": 1,
+      "shard_offset": 6,
+      "supplied_capacity": 30
+    }
+  ],
+  "logical_tree_num": 4,
+  "max_shards_per_logical": 4,
+  "name": "stage15_baseline",
+  "physical_id_width": 3,
+  "physical_shard": {
+    "level": 4,
+    "order": 2,
+    "structural_capacity": 30
+  },
+  "physical_to_logical": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    3
+  ],
+  "physical_tree_num": 7,
+  "resource_limits": {
+    "max_logical_pifos": 64,
+    "max_physical_shards": 64
+  },
+  "schema_version": 1,
+  "source": "E:/vPIFO/hardware/BMW_PIFO_SRAM_vPIFO/config/vpifo_config.json"
+}

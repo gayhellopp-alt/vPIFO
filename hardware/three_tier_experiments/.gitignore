@@ -1,0 +1,6 @@
+obj_dir_*/
+.Xil/
+*.jou
+*.log
+*.pid
+runs/*/*.dcp

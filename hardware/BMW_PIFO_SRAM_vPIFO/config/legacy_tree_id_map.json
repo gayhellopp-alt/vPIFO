@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "name": "original_sdl_compiler_compact_ids",
+  "external_to_logical": {
+    "10": 1,
+    "20": 2
+  }
+}

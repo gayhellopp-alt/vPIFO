@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "five_logical",
+  "required_capacity": [30, 60, 90, 30, 60],
+  "physical_shard": {
+    "order": 2,
+    "level": 4
+  },
+  "resource_limits": {
+    "max_logical_pifos": 64,
+    "max_physical_shards": 64
+  }
+}

@@ -1,0 +1,15 @@
+// Java-style annotations are compile-time VPIFO subclasses.
+@ScheduleVPIFO(capacity=60, root=true)
+vpifo root;
+
+@ScheduleVPIFO(capacity=30, parent="root")
+vpifo leaf_a;
+
+@ScheduleVPIFO(capacity=30, parent="root")
+vpifo leaf_b;
+
+@TimingVPIFO(capacity=60, releaseTo="leaf_a", program="token_bucket")
+vpifo shape_a;
+
+@TimingVPIFO(capacity=30, releaseTo="leaf_b", program="absolute")
+vpifo shape_b;

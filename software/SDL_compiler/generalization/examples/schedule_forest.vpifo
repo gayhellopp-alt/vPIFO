@@ -1,0 +1,18 @@
+// Two semantic schedule trees in one schedule execution domain.
+@ScheduleVPIFO(capacity=60, root=true)
+vpifo root_a;
+
+@ScheduleVPIFO(capacity=30, parent="root_a")
+vpifo leaf_a;
+
+@ScheduleVPIFO(capacity=30, root=true)
+vpifo root_b;
+
+@ScheduleVPIFO(capacity=60, parent="root_b")
+vpifo leaf_b;
+
+@TimingVPIFO(capacity=31, releaseTo="leaf_a", program="virtual_clock")
+vpifo shape_a;
+
+@TimingVPIFO(capacity=30, releaseTo="leaf_b", program="absolute")
+vpifo shape_b;

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "stage15_baseline",
+  "required_capacity": [100, 20, 30, 25],
+  "physical_shard": {
+    "order": 2,
+    "level": 4
+  },
+  "resource_limits": {
+    "max_logical_pifos": 64,
+    "max_physical_shards": 64
+  }
+}

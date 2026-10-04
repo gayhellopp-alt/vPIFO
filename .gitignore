@@ -1,0 +1,34 @@
+# Rebuildable simulator and FPGA tool output.
+**/.Xil/
+**/__pycache__/
+**/obj_dir*/
+**/xsim_*/
+/hardware/BMW_PIFO_SRAM_vPIFO/vivado_*/
+/hardware/BMW_PIFO_SRAM_vPIFO/node_y_*logs*/
+
+# Tool logs and checkpoints. Keep text reports and result tables separately.
+*.dcp
+*.exe
+*.jou
+*.log
+*.pid
+*.pyc
+*.swp
+
+# Original repository output files excluded from the code-only export.
+/FPGA_data*.xlsx
+**/compiler_test/*.png
+
+# Regenerable experiment results.
+/hardware/three_tier_experiments/runs/
+/hardware/paper_reproduction/runs/
+/hardware/BMW_PIFO_SRAM_vPIFO/heterogeneous_capacity_runs/
+/hardware/BMW_PIFO_SRAM_vPIFO/output/
+/hardware/BMW_PIFO_SRAM_vPIFO/hierarchical_sustained_ab_*.csv
+/hardware/BMW_PIFO_SRAM_vPIFO/hierarchical_sustained_ab_*.pdf
+/hardware/BMW_PIFO_SRAM_vPIFO/hierarchical_sustained_ab_*.png
+/hardware/BMW_PIFO_SRAM_vPIFO/node_y_pop_window_sweep_*.csv
+/hardware/BMW_PIFO_SRAM_vPIFO/node_y_rate_limit_curve.*
+/hardware/BMW_PIFO_SRAM_vPIFO/non_conserving_ab_*.csv
+/hardware/BMW_PIFO_SRAM_vPIFO/non_conserving_ab_*.pdf
+/hardware/BMW_PIFO_SRAM_vPIFO/non_conserving_ab_*.png

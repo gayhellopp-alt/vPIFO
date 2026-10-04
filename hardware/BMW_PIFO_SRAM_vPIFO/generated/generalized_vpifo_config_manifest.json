@@ -1,0 +1,166 @@
+{
+  "connection_table": [
+    {
+      "program_mode": 4,
+      "schedule_global_id": 1,
+      "schedule_local_id": 1,
+      "timing_global_id": 3,
+      "timing_local_id": 0
+    },
+    {
+      "program_mode": 3,
+      "schedule_global_id": 2,
+      "schedule_local_id": 2,
+      "timing_global_id": 4,
+      "timing_local_id": 1
+    }
+  ],
+  "execution_model": "two_independent_domains_with_static_release_edges",
+  "global_id_width": 3,
+  "global_node_num": 5,
+  "name": "two_domain_example",
+  "nodes": [
+    {
+      "capacity": 60,
+      "domain_local_id": 0,
+      "id": 0,
+      "kind": "schedule",
+      "name": "root",
+      "parent": null,
+      "program": "immediate",
+      "release_to": null,
+      "root": true
+    },
+    {
+      "capacity": 30,
+      "domain_local_id": 1,
+      "id": 1,
+      "kind": "schedule",
+      "name": "leaf_a",
+      "parent": 0,
+      "program": "immediate",
+      "release_to": null,
+      "root": false
+    },
+    {
+      "capacity": 30,
+      "domain_local_id": 2,
+      "id": 2,
+      "kind": "schedule",
+      "name": "leaf_b",
+      "parent": 0,
+      "program": "immediate",
+      "release_to": null,
+      "root": false
+    },
+    {
+      "capacity": 60,
+      "domain_local_id": 0,
+      "id": 3,
+      "kind": "timing",
+      "name": "shape_a",
+      "parent": null,
+      "program": "token_bucket",
+      "release_to": 1,
+      "root": false
+    },
+    {
+      "capacity": 30,
+      "domain_local_id": 1,
+      "id": 4,
+      "kind": "timing",
+      "name": "shape_b",
+      "parent": null,
+      "program": "absolute",
+      "release_to": 2,
+      "root": false
+    }
+  ],
+  "schedule_domain": {
+    "level": 4,
+    "logical_tree_num": 3,
+    "physical_to_logical": [
+      0,
+      0,
+      1,
+      2
+    ],
+    "physical_tree_num": 4,
+    "required_capacity": [
+      60,
+      30,
+      30
+    ],
+    "shard_capacity": 30,
+    "shard_counts": [
+      2,
+      1,
+      1
+    ],
+    "shard_offsets": [
+      0,
+      2,
+      3
+    ],
+    "shard_partition": "shared",
+    "shard_partition_scope": "storage_only_shared_rpus"
+  },
+  "schedule_forest": {
+    "node_is_root": [
+      1,
+      0,
+      0
+    ],
+    "node_parent": [
+      0,
+      0,
+      0
+    ],
+    "node_tree_id": [
+      0,
+      0,
+      0
+    ],
+    "root_of_node": [
+      0,
+      0,
+      0
+    ],
+    "semantic_tree_num": 1,
+    "tree_roots": [
+      0
+    ],
+    "tree_shard_counts": [
+      4
+    ],
+    "tree_shard_offsets": [
+      0
+    ]
+  },
+  "schedule_topology": "root_plus_leaf_forest",
+  "schema_version": 2,
+  "source": "E:/vPIFO/hardware/BMW_PIFO_SRAM_vPIFO/config/generalized_vpifo_config.json",
+  "timing_domain": {
+    "level": 4,
+    "logical_tree_num": 2,
+    "physical_to_logical": [
+      0,
+      0,
+      1
+    ],
+    "physical_tree_num": 3,
+    "required_capacity": [
+      60,
+      30
+    ],
+    "shard_capacity": 30,
+    "shard_counts": [
+      2,
+      1
+    ],
+    "shard_offsets": [
+      0,
+      2
+    ]
+  }
+}

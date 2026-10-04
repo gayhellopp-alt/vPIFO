@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "name": "two_domain_example",
+  "nodes": [
+    {
+      "id": 0,
+      "name": "root",
+      "kind": "schedule",
+      "capacity": 60,
+      "root": true
+    },
+    {
+      "id": 1,
+      "name": "leaf_a",
+      "kind": "schedule",
+      "capacity": 30,
+      "parent": "root"
+    },
+    {
+      "id": 2,
+      "name": "leaf_b",
+      "kind": "schedule",
+      "capacity": 30,
+      "parent": "root"
+    },
+    {
+      "id": 3,
+      "name": "shape_a",
+      "kind": "timing",
+      "capacity": 60,
+      "release_to": "leaf_a",
+      "program": "token_bucket"
+    },
+    {
+      "id": 4,
+      "name": "shape_b",
+      "kind": "timing",
+      "capacity": 30,
+      "release_to": "leaf_b",
+      "program": "absolute"
+    }
+  ],
+  "domains": {
+    "schedule": {
+      "physical_shard": {"order": 2, "level": 4},
+      "resource_limits": {
+        "max_logical_pifos": 64,
+        "max_physical_shards": 64
+      }
+    },
+    "timing": {
+      "physical_shard": {"order": 2, "level": 4},
+      "resource_limits": {
+        "max_logical_pifos": 64,
+        "max_physical_shards": 64
+      }
+    }
+  }
+}

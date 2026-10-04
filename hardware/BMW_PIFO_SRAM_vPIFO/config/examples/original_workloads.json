@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "original_workloads",
+  "required_capacity": [120, 60, 60, 30],
+  "physical_shard": {
+    "order": 2,
+    "level": 4
+  },
+  "resource_limits": {
+    "max_logical_pifos": 64,
+    "max_physical_shards": 64
+  }
+}
