@@ -19,6 +19,20 @@
 
 异构容量配置的字段与容量计算见[配置说明](hardware/BMW_PIFO_SRAM_vPIFO/CONFIGURATION.md)；双执行域、调度森林和注解语法见[通用化设计说明](hardware/BMW_PIFO_SRAM_vPIFO/VPIFO_GENERALIZATION.md)。
 
+## 相比原公开代码的扩展
+
+原公开实现以 SDL 编译器和 BMW-Tree PIFO Engine 执行分层调度。本仓库保留原版 SDL 编译器及 DPDK、ns-3 实验代码，在 FPGA RTL 和配置流程中加入以下实现：
+
+| 方面 | 已实现的改动 |
+| --- | --- |
+| 原 BMW 引擎修补 | 修正 `PIFO_SRAM.sv` 的 SRAM 地址宽度计算，提供根节点 head 更新信号，并为 `TaskFIFO` 增加可选的写入握手方式；M=2/4/8 版本也修正了地址宽度表达式。原公开源码快照与仅修正该表达式的论文复现版本分开放置，见[复现说明](hardware/paper_reproduction/README.md)。 |
+| 异构逻辑容量 | [ShardDirectory](hardware/BMW_PIFO_SRAM_vPIFO/ShardDirectory.sv)、[LogicalRequestBuffer](hardware/BMW_PIFO_SRAM_vPIFO/LogicalRequestBuffer.sv)、[PopResultFIFO](hardware/BMW_PIFO_SRAM_vPIFO/PopResultFIFO.sv) 与 [HeterogeneousPIFO](hardware/BMW_PIFO_SRAM_vPIFO/HeterogeneousPIFO.sv) 让一个逻辑 PIFO 使用多个物理 BMW shard，并管理请求、容量、head 与 Pop 返回。 |
+| 分层调度 | [HierarchicalHeterogeneousPIFO](hardware/BMW_PIFO_SRAM_vPIFO/HierarchicalHeterogeneousPIFO.sv) 和 [ScheduleForestHeterogeneousPIFO](hardware/BMW_PIFO_SRAM_vPIFO/ScheduleForestHeterogeneousPIFO.sv) 支持两层调度及多个两层语义树；[RecursiveScheduleTreeHeterogeneousPIFO](hardware/BMW_PIFO_SRAM_vPIFO/RecursiveScheduleTreeHeterogeneousPIFO.sv) 用于实验性的递归三层结构和分段 Push。 |
+| 到期调度与整形 | 独立的 timing PIFO、事件表、到期仲裁和 ReleaseFIFO 将到期事件送入 scheduling PIFO。[ShapingTransactionEngine](hardware/BMW_PIFO_SRAM_vPIFO/ShapingTransactionEngine.sv) 提供立即释放、virtual clock、绝对时间和 Token Bucket 固定模式；三层节点 Y 的局部 Push 与到期后父引用 Push 见[三层实验说明](hardware/BMW_PIFO_SRAM_vPIFO/THREE_TIER_TOKEN_BUCKET_EXPERIMENT.md)。 |
+| 配置、优化和验证 | JSON 生成器和 [VPIFO 注解前端](software/SDL_compiler/generalization/compile_vpifo_annotations.py) 生成静态节点、容量与连接表；新增 Verilator 回归、Vivado 脚本和原论文基线复现流程。当前非工作保守实验顶层的 16 位顺序号与排空回绕屏障见[O4 结果](hardware/BMW_PIFO_SRAM_vPIFO/NON_CONSERVING_RESOURCE_OPTIMIZATION_O4_RESULTS.md)。 |
+
+容量、节点类型和连接关系在生成与重新编译时确定，不能在 RTL 运行期间动态调整。通用化顶层目前支持多个“根节点 + 叶节点”的两层语义树；递归三层结构由单独的实验封装实现。Token Bucket 决定事件何时具有调度资格，持续背压下不保证物理出口的严格滑动窗口限速。调度 rank 仍由上游计算，本仓库没有新增完整的通用 PIFO Visor／Operation Generation Table RTL。
+
 ## 开始使用
 
 以下命令均从仓库根目录执行，除非步骤中明确切换目录。
